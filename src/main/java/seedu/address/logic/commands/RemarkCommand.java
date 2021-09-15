@@ -66,8 +66,7 @@ public class RemarkCommand extends Command {
 
     /**
      * Generates a command execution success message based on whether
-     * the remark is added to or removed from
-     * {@code personToEdit}.
+     * the remark is added to or removed from {@code personToEdit}.
      */
     private String generateSuccessMessage(Person personToEdit) {
         String message = !remark.value.isEmpty() ? MESSAGE_ADD_REMARK_SUCCESS : MESSAGE_DELETE_REMARK_SUCCESS;
