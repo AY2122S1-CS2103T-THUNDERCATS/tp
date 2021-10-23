@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.state.ApplicationState;
 import seedu.address.model.Model;
 import seedu.address.model.group.Group;
 import seedu.address.model.person.Person;
@@ -16,7 +17,7 @@ import seedu.address.model.person.Person;
 /** Adds a person to a group in the address book.
  *
  */
-public class AddGroupCommand extends Command {
+public class AddToGroupCommand extends Command {
 
     public static final String COMMAND_WORD = "addG";
 
@@ -39,7 +40,7 @@ public class AddGroupCommand extends Command {
      * @param groupIndex
      * @param personIndexes
      */
-    public AddGroupCommand(Index groupIndex, Set<Index> personIndexes) {
+    public AddToGroupCommand(Index groupIndex, Set<Index> personIndexes) {
         requireAllNonNull(groupIndex, personIndexes);
         this.groupIndex = groupIndex;
         this.personIndexes = personIndexes;
@@ -70,13 +71,14 @@ public class AddGroupCommand extends Command {
 
         model.addToGroup(groupToChange, personSet);
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, groupToChange));
+        return new CommandResult.Builder(String.format(MESSAGE_SUCCESS, groupToChange))
+                .setNextAppState(ApplicationState.HOME).build();
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddGroupCommand // instanceof handles nulls
-                && groupIndex.equals(((AddGroupCommand) other).groupIndex));
+                || (other instanceof AddToGroupCommand // instanceof handles nulls
+                && groupIndex.equals(((AddToGroupCommand) other).groupIndex));
     }
 }

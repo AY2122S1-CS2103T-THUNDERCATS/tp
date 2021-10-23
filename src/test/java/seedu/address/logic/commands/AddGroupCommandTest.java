@@ -36,12 +36,12 @@ public class AddGroupCommandTest {
 
     @Test
     public void constructor_nullGroupIndex_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddGroupCommand(null, emptySet));
+        assertThrows(NullPointerException.class, () -> new AddToGroupCommand(null, emptySet));
     }
 
     @Test
     public void constructor_nullPersonIndexSet_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddGroupCommand(Index.fromZeroBased(0), null));
+        assertThrows(NullPointerException.class, () -> new AddToGroupCommand(Index.fromZeroBased(0), null));
     }
 
     @Test
@@ -55,14 +55,14 @@ public class AddGroupCommandTest {
         Set<Index> personIndexesSet = new HashSet<>();
         personIndexesSet.add(INDEX_FIRST);
 
-        AddGroupCommand addGroupCommand = new AddGroupCommand(INDEX_SECOND, personIndexesSet);
+        AddToGroupCommand addToGroupCommand = new AddToGroupCommand(INDEX_SECOND, personIndexesSet);
 
-        String expectedMessage = String.format(AddGroupCommand.MESSAGE_SUCCESS, validGroup);
+        String expectedMessage = String.format(AddToGroupCommand.MESSAGE_SUCCESS, validGroup);
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.addToGroup(validGroup, personSet);
 
-        assertCommandSuccess(addGroupCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(addToGroupCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
@@ -70,10 +70,10 @@ public class AddGroupCommandTest {
         Set<Index> personIndexesSet = new HashSet<>();
         personIndexesSet.add(INDEX_INVALID);
 
-        AddGroupCommand addGroupCommand = new AddGroupCommand(INDEX_SECOND, personIndexesSet);
-        String expectedMessage = AddGroupCommand.MESSAGE_INVALID_PERSON_INDEX;
+        AddToGroupCommand addToGroupCommand = new AddToGroupCommand(INDEX_SECOND, personIndexesSet);
+        String expectedMessage = AddToGroupCommand.MESSAGE_INVALID_PERSON_INDEX;
 
-        assertCommandFailure(addGroupCommand, model, expectedMessage);
+        assertCommandFailure(addToGroupCommand, model, expectedMessage);
     }
 
     @Test
@@ -81,10 +81,10 @@ public class AddGroupCommandTest {
         Set<Index> personIndexesSet = new HashSet<>();
         personIndexesSet.add(Index.fromZeroBased(1));
 
-        AddGroupCommand addGroupCommand = new AddGroupCommand(Index.fromOneBased(30), personIndexesSet);
-        String expectedMessage = AddGroupCommand.MESSAGE_INVALID_GROUP_INDEX;
+        AddToGroupCommand addToGroupCommand = new AddToGroupCommand(Index.fromOneBased(30), personIndexesSet);
+        String expectedMessage = AddToGroupCommand.MESSAGE_INVALID_GROUP_INDEX;
 
-        assertCommandFailure(addGroupCommand, model, expectedMessage);
+        assertCommandFailure(addToGroupCommand, model, expectedMessage);
     }
 
     /**
