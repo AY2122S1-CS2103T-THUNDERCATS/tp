@@ -11,7 +11,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddToGroupCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-public class AddGroupCommandParser implements Parser<AddToGroupCommand> {
+public class AddToGroupCommandParser implements Parser<AddToGroupCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddGroupCommand

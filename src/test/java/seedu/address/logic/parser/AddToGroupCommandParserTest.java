@@ -15,8 +15,8 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddToGroupCommand;
 
-public class AddGroupCommandParserTest {
-    private AddGroupCommandParser parser = new AddGroupCommandParser();
+public class AddToGroupCommandParserTest {
+    private AddToGroupCommandParser parser = new AddToGroupCommandParser();
 
     @Test
     public void parse_allFieldsPresent_success() {

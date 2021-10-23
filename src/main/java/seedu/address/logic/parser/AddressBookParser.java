@@ -97,7 +97,7 @@ public class AddressBookParser {
             return new RemoveCommandParser().parse(arguments);
 
         case AddToGroupCommand.COMMAND_WORD:
-            return new AddGroupCommandParser().parse(arguments);
+            return new AddToGroupCommandParser().parse(arguments);
 
         case DeleteTaskCommand.COMMAND_WORD:
             return new DeleteTaskCommandParser().parse(arguments);

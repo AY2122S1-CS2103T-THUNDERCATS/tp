@@ -19,7 +19,7 @@ import seedu.address.model.person.Person;
  */
 public class AddToGroupCommand extends Command {
 
-    public static final String COMMAND_WORD = "addG";
+    public static final String COMMAND_WORD = "addToG";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Adds person to a group identified by the index number used in the displayed "

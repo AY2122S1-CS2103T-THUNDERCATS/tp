@@ -30,7 +30,7 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.group.Group;
 import seedu.address.model.person.Person;
 
-public class AddGroupCommandTest {
+public class AddToGroupCommandTest {
     private Set<Index> emptySet = Collections.emptySet();
     private Model model = new ModelManager(getTypicalAddressBookWithGroups(), new UserPrefs());
 
@@ -201,7 +201,7 @@ public class AddGroupCommandTest {
     /**
      * A Model stub that always accept the group being added.
      */
-    private class ModelStubAcceptingGroupAdded extends AddGroupCommandTest.ModelStub {
+    private class ModelStubAcceptingGroupAdded extends AddToGroupCommandTest.ModelStub {
         final ArrayList<Group> groupsAdded = new ArrayList<>();
 
         @Override
